@@ -45,6 +45,6 @@ public class CoffeeScriptCompilerTest {
     }
 
     private String compiling(String coffeeScriptSource, Boolean bare) throws JCoffeeScriptCompileException {
-        return new JCoffeeScriptCompiler(bare).compile(coffeeScriptSource);
+        return new JCoffeeScriptCompiler().compile(coffeeScriptSource, bare);
     }
 }

@@ -29,13 +29,8 @@ import java.io.UnsupportedEncodingException;
 public class JCoffeeScriptCompiler {
 
     private final Scriptable globalScope;
-    private final Boolean bare;
 
 	public JCoffeeScriptCompiler() {
-        this( false );
-    }
-
-	public JCoffeeScriptCompiler(Boolean bare) {
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("org/jcoffeescript/coffee-script.js");
         try {
@@ -61,11 +56,9 @@ public class JCoffeeScriptCompiler {
         } catch (IOException e) {
             throw new Error(e); // This should never happen
         }
-
-        this.bare = bare;
     }
 
-	public String compile (String coffeeScriptSource) throws JCoffeeScriptCompileException {
+	public String compile (String coffeeScriptSource, Boolean bare) throws JCoffeeScriptCompileException {
         Context context = Context.enter();
         try {
             Scriptable compileScope = context.newObject(globalScope);

@@ -32,7 +32,7 @@ public class Main {
     public void execute(String[] args, PrintStream out, InputStream in) {
         final Boolean bare = readIsBareFrom(args);
         try {
-            out.print(new JCoffeeScriptCompiler(bare).compile(readSourceFrom(in)));
+            out.print(new JCoffeeScriptCompiler().compile(readSourceFrom(in), bare));
         } catch (JCoffeeScriptCompileException e) {
             System.err.println(e.getMessage());
         }
